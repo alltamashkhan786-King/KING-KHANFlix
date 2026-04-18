@@ -1,23 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>King Khan Flix</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KING KHANFlix</title>
+
 <style>
 body{
-background:black;
-color:white;
-text-align:center;
-padding-top:100px;
+margin:0;
+background:#111;
 font-family:Arial;
+color:white;
 }
-h1{color:red;font-size:50px;}
-p{font-size:22px;}
+
+header{
+background:black;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:red;
+font-size:30px;
+font-weight:bold;
+}
+
+input{
+padding:8px;
+width:150px;
+border:none;
+border-radius:5px;
+}
+
+.banner{
+padding:60px 20px;
+background:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba') center/cover;
+text-align:center;
+}
+
+.banner h1{
+font-size:40px;
+}
+
+.btn{
+background:red;
+padding:10px 20px;
+color:white;
+text-decoration:none;
+border-radius:5px;
+}
+
+.movies{
+padding:20px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.card{
+background:#222;
+padding:10px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:gray;
+}
 </style>
 </head>
+
 <body>
 
-<h1>🎬 KING KHAN FLIX</h1>
-<p>Your Movie Website is Live Successfully 🚀</p>
+<header>
+<div class="logo">KING KHANFlix</div>
+<input type="text" placeholder="Search">
+</header>
+
+<section class="banner">
+<h1>Unlimited Movies</h1>
+<p>Watch Anywhere Anytime</p>
+<a href="#" class="btn">Watch Now</a>
+</section>
+
+<section class="movies">
+
+<div class="card">
+<img src="https://via.placeholder.com/200x300">
+<h3>Movie 1</h3>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200x300">
+<h3>Movie 2</h3>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200x300">
+<h3>Movie 3</h3>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200x300">
+<h3>Movie 4</h3>
+</div>
+
+</section>
+
+<footer>
+© KING KHANFlix 2026
+</footer>
 
 </body>
-</html>
+  </html>
