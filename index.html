@@ -7,13 +7,13 @@
 <style>
 body{
 margin:0;
-background:#111;
 font-family:Arial;
+background:#111;
 color:white;
 }
 
 header{
-background:black;
+background:#000;
 padding:15px;
 display:flex;
 justify-content:space-between;
@@ -22,40 +22,47 @@ align-items:center;
 
 .logo{
 color:red;
-font-size:30px;
+font-size:28px;
 font-weight:bold;
 }
 
-input{
+.search{
 padding:8px;
-width:150px;
 border:none;
 border-radius:5px;
+width:140px;
 }
 
 .banner{
-padding:60px 20px;
-background:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba') center/cover;
+background:url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c') center/cover;
+padding:70px 20px;
 text-align:center;
 }
 
 .banner h1{
-font-size:40px;
+font-size:38px;
+margin:0;
+}
+
+.banner p{
+font-size:18px;
 }
 
 .btn{
+display:inline-block;
+margin:5px;
+padding:10px 18px;
 background:red;
-padding:10px 20px;
 color:white;
 text-decoration:none;
 border-radius:5px;
 }
 
 .movies{
-padding:20px;
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
+padding:20px;
 }
 
 .card{
@@ -67,7 +74,24 @@ text-align:center;
 
 .card img{
 width:100%;
+height:250px;
+object-fit:cover;
 border-radius:10px;
+}
+
+.card h3{
+font-size:16px;
+}
+
+.smallbtn{
+display:block;
+margin:5px 0;
+padding:8px;
+background:red;
+color:white;
+text-decoration:none;
+border-radius:5px;
+font-size:14px;
 }
 
 footer{
@@ -82,35 +106,44 @@ color:gray;
 
 <header>
 <div class="logo">KING KHANFlix</div>
-<input type="text" placeholder="Search">
+<input class="search" placeholder="Search">
 </header>
 
 <section class="banner">
-<h1>Unlimited Movies</h1>
-<p>Watch Anywhere Anytime</p>
+<h1>Unlimited Entertainment</h1>
+<p>Watch Movies Anytime Anywhere</p>
 <a href="#" class="btn">Watch Now</a>
+<a href="#" class="btn">Download App</a>
 </section>
 
 <section class="movies">
 
 <div class="card">
-<img src="https://via.placeholder.com/200x300">
-<h3>Movie 1</h3>
+<img src="https://via.placeholder.com/300x450?text=Avengers">
+<h3>Avengers</h3>
+<a href="#" class="smallbtn">▶ Watch</a>
+<a href="#" class="smallbtn">⬇ Download</a>
 </div>
 
 <div class="card">
-<img src="https://via.placeholder.com/200x300">
-<h3>Movie 2</h3>
+<img src="https://via.placeholder.com/300x450?text=Fast+X">
+<h3>Fast X</h3>
+<a href="#" class="smallbtn">▶ Watch</a>
+<a href="#" class="smallbtn">⬇ Download</a>
 </div>
 
 <div class="card">
-<img src="https://via.placeholder.com/200x300">
-<h3>Movie 3</h3>
+<img src="https://via.placeholder.com/300x450?text=Jawan">
+<h3>Jawan</h3>
+<a href="#" class="smallbtn">▶ Watch</a>
+<a href="#" class="smallbtn">⬇ Download</a>
 </div>
 
 <div class="card">
-<img src="https://via.placeholder.com/200x300">
-<h3>Movie 4</h3>
+<img src="https://via.placeholder.com/300x450?text=Pathaan">
+<h3>Pathaan</h3>
+<a href="#" class="smallbtn">▶ Watch</a>
+<a href="#" class="smallbtn">⬇ Download</a>
 </div>
 
 </section>
@@ -120,4 +153,4 @@ color:gray;
 </footer>
 
 </body>
-</html>
+  </html>
