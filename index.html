@@ -132,16 +132,15 @@ color:gray;
 </section>
 
 <section class="categories">
-<button>Action</button>
-<button>Comedy</button>
-<button>Horror</button>
-<button>Drama</button>
-<button>Romance</button>
+<button onclick="filterMovies('all')">All</button>
+<button onclick="filterMovies('action')">Action</button>
+<button onclick="filterMovies('comedy')">Comedy</button>
+<button onclick="filterMovies('horror')">Horror</button>
+<button onclick="filterMovies('drama')">Drama</button>
 </section>
-
 <section class="movies" id="movieList">
 
-<div class="card"><img src="animal.jpg"><h3>Animal</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
+<div class="card" data-cat="action"><img src="animal.jpg"><h3>Animal</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
 
 <div class="card"><img src="https://picsum.photos/300/450?random=2"><h3>Jawan</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
 
