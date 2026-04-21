@@ -177,6 +177,17 @@ let title=cards[i].innerText.toLowerCase();
 cards[i].style.display=title.includes(input) ? "block":"none";
 }
 }
+function filterMovies(cat){
+let cards=document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+if(cat=="all" || cards[i].getAttribute("data-cat")==cat){
+cards[i].style.display="block";
+}else{
+cards[i].style.display="none";
+}
+}
+  } 
 </script>
 
 </body>
