@@ -7,7 +7,7 @@
 <style>
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:#111;
 color:white;
 }
@@ -15,68 +15,103 @@ color:white;
 header{
 background:#000;
 padding:15px;
-text-align:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.logo{
+color:red;
 font-size:28px;
 font-weight:bold;
-color:red;
+}
+
+#search{
+padding:8px;
+border:none;
+border-radius:5px;
+width:150px;
+}
+
+.banner{
+padding:70px 20px;
+text-align:center;
+background:linear-gradient(to right,#000,#222);
+}
+
+.banner h1{
+font-size:38px;
+margin:0;
+}
+
+.banner p{
+color:#ccc;
+}
+
+.btn{
+display:inline-block;
+margin:5px;
+padding:10px 18px;
+background:red;
+color:white;
+text-decoration:none;
+border-radius:5px;
+}
+
+.categories{
+padding:10px;
+text-align:center;
+}
+
+.categories button{
+margin:5px;
+padding:8px 14px;
+border:none;
+border-radius:5px;
+background:#333;
+color:white;
 }
 
 .movies{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
-padding:15px;
+padding:20px;
 }
 
 .card{
 background:#222;
-border-radius:12px;
-overflow:hidden;
-position:relative;
+padding:10px;
+border-radius:10px;
+text-align:center;
 }
 
 .card img{
 width:100%;
-height:250px;
+height:240px;
 object-fit:cover;
+border-radius:10px;
 }
 
-.info{
-padding:10px;
+.card h3{
+font-size:15px;
 }
 
-.info h3{
-margin:0;
-font-size:16px;
-}
-
-.tag{
-display:inline-block;
+.smallbtn{
+display:block;
+margin:5px 0;
+padding:8px;
 background:red;
-padding:3px 8px;
-border-radius:20px;
-font-size:12px;
-margin-top:6px;
-}
-
-.icons{
-display:flex;
-justify-content:space-between;
-margin-top:10px;
-font-size:20px;
-}
-
-.icons a{
 color:white;
 text-decoration:none;
-background:#333;
-padding:8px 12px;
-border-radius:8px;
+border-radius:5px;
+font-size:14px;
 }
 
 footer{
 text-align:center;
-padding:15px;
+padding:20px;
 color:gray;
 }
 </style>
@@ -84,61 +119,57 @@ color:gray;
 
 <body>
 
-<header>KING KHANFlix</header>
+<header>
+<div class="logo">KING KHANFlix</div>
+<input type="text" id="search" placeholder="Search Movies..." onkeyup="searchMovies()">
+</header>
 
-<section class="movies">
+<section class="banner">
+<h1>Unlimited Movies</h1>
+<p>Watch Anytime, Anywhere</p>
+<a href="#" class="btn">Watch Now</a>
+<a href="#" class="btn">Join Now</a>
+</section>
 
-<div class="card">
-<img src="https://picsum.photos/300/450?1">
-<div class="info">
-<h3>Animal</h3>
-<span class="tag">HD</span>
-<div class="icons">
-<a href="#">▶</a>
-<a href="#">⬇</a>
-</div>
-</div>
-</div>
+<section class="categories">
+<button>Action</button>
+<button>Comedy</button>
+<button>Horror</button>
+<button>Drama</button>
+<button>Romance</button>
+</section>
 
-<div class="card">
-<img src="https://picsum.photos/300/450?2">
-<div class="info">
-<h3>Jawan</h3>
-<span class="tag">4K</span>
-<div class="icons">
-<a href="#">▶</a>
-<a href="#">⬇</a>
-</div>
-</div>
-</div>
+<section class="movies" id="movieList">
 
-<div class="card">
-<img src="https://picsum.photos/300/450?3">
-<div class="info">
-<h3>Pathaan</h3>
-<span class="tag">HD</span>
-<div class="icons">
-<a href="#">▶</a>
-<a href="#">⬇</a>
-</div>
-</div>
-</div>
+<div class="card"><img src="https://via.placeholder.com/300x450?text=Avengers"><h3>Avengers</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
 
-<div class="card">
-<img src="https://picsum.photos/300/450?4">
-<div class="info">
-<h3>KGF 2</h3>
-<span class="tag">720p</span>
-<div class="icons">
-<a href="#">▶</a>
-<a href="#">⬇</a>
-</div>
-</div>
-</div>
+<div class="card"><img src="https://via.placeholder.com/300x450?text=Jawan"><h3>Jawan</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
+
+<div class="card"><img src="https://via.placeholder.com/300x450?text=Pathaan"><h3>Pathaan</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
+
+<div class="card"><img src="https://via.placeholder.com/300x450?text=Fast+X"><h3>Fast X</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
+
+<div class="card"><img src="https://via.placeholder.com/300x450?text=Animal"><h3>Animal</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
+
+<div class="card"><img src="https://via.placeholder.com/300x450?text=KGF+2"><h3>KGF 2</h3><a href="#" class="smallbtn">▶ Watch</a><a href="#" class="smallbtn">⬇ Download</a></div>
 
 </section>
 
-<footer>© 2026 KING KHANFlix</footer>
+<footer>
+© 2026 KING KHANFlix
+</footer>
+
+<script>
+function searchMovies(){
+let input=document.getElementById("search").value.toLowerCase();
+let cards=document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+let title=cards[i].innerText.toLowerCase();
+cards[i].style.display=title.includes(input) ? "block":"none";
+}
+}
+</script>
 
 </body>
   </html>
