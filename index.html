@@ -587,7 +587,11 @@
 const API_KEY = "2db7640c4ee6dfff8dc64946b28a4121";
 const IMG = "https://image.tmdb.org/t/p/w500";
 const BASE = "https://api.themoviedb.org/3";
-
+const watchLinks = {
+  "Animal": "https://example.com/animal",
+  "KGF Chapter 3": "https://example.com/kgf3",
+  "Avengers: Doomsday": "https://example.com/avengers"
+};
 // ── Card builder ──
 function makeCard(m) {
   const poster = m.poster_path ? IMG + m.poster_path : "https://via.placeholder.com/200x290?text=No+Image";
@@ -691,7 +695,10 @@ document.body.insertAdjacentHTML("beforeend", `
 <p>${data.overview}</p>
 ${trailer ? `<iframe width="100%" height="400" src="https://www.youtube.com/embed/${trailer}" allowfullscreen></iframe>` : ""}
 <br><br>
-<a href="#" style="background:red;padding:10px 20px;color:white;text-decoration:none;">▶ Watch Now</a>
+<a href="${watchLinks[data.title] || '#'}" target="_blank"
+style="background:red;padding:10px 20px;color:white;text-decoration:none;">
+▶ Watch Now
+</a>
 <button onclick="document.getElementById('popup').remove()" style="float:right;">❌ Close</button>
 </div>
 </div>
