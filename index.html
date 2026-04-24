@@ -683,13 +683,17 @@ function goSlide(n) {
 setInterval(() => goSlide((cur + 1) % slides.length), 4000);
 
 // ── Temporary simple popup function ──
-function showMovie(id){
+async function showMovie(id){
+const res = await fetch(`${BASE}/movie/${id}?api_key=${API_KEY}`);
+const m = await res.json();
+
 document.getElementById("popup").style.display="flex";
-document.getElementById("poptitle").innerText="Movie ID: "+id;
-document.getElementById("popimg").src="https://via.placeholder.com/300x450?text=Movie";
+document.getElementById("poptitle").innerText = m.title || "Movie";
+document.getElementById("popimg").src = IMG + m.poster_path;
+
 document.getElementById("watchbtn").href="#";
 document.getElementById("downbtn").href="#";
-}
+  }
 
 function closePopup(){
 document.getElementById("popup").style.display="none";
