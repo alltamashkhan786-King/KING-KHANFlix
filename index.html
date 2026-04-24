@@ -2,6 +2,8 @@
 <html lang="ur" dir="ltr">
 <head>
   <meta charset="UTF-8" />
+ <meta name="theme-color" content="#e50914">
+ <meta name="description" content="KING KHANFlix Free HD Movies">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KING KHANFlix - Free HD Movies & Web Series</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -388,7 +390,7 @@
 <!-- HERO SLIDER -->
 <div class="hero">
   <div class="slide active">
-    <img src="https://image.tmdb.org/t/p/original/9l1eZiJHmhr5jIlthMdJN5WYoff.jpg">
+    <img src="https://image.tmdb.org/t/p/original/9l1eZiJHmhr5jIlthMdJN5WYoff.jpg">loading="lazy"
     <div class="slide-info">
       <span class="slide-badge">🔥 New Release</span>
       <div class="slide-title">Avengers: Doomsday</div>
@@ -400,7 +402,7 @@
     </div>
   </div>
   <div class="slide">
-    <img src="https://image.tmdb.org/t/p/original/8rpDcsfLJypbO6vREc0547VKqEv.jpg">
+    <img src="https://image.tmdb.org/t/p/original/8rpDcsfLJypbO6vREc0547VKqEv.jpg">loading="lazy"
     <div class="slide-info">
       <span class="slide-badge">🎬 Featured</span>
       <div class="slide-title">KGF: Chapter 3</div>
@@ -412,7 +414,7 @@
     </div>
   </div>
   <div class="slide">
-    <img src="https://image.tmdb.org/t/p/original/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg">
+    <img src="https://image.tmdb.org/t/p/original/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg">loading="lazy"
     <div class="slide-info">
       <span class="slide-badge">🌟 Trending</span>
       <div class="slide-title">Fast X: Part 2</div>
@@ -727,6 +729,9 @@ document.getElementById("lockscreen").style.display="none";
 document.getElementById("wrong").innerText="Wrong Password";
 }
   }
+window.addEventListener("load", ()=>{
+document.body.style.opacity="1";
+});
 </script>
 <div id="popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;justify-content:center;align-items:center;">
   <div style="background:#111;padding:20px;border-radius:10px;max-width:320px;width:90%;text-align:center;color:white;">
