@@ -684,15 +684,16 @@ setInterval(() => goSlide((cur + 1) % slides.length), 4000);
 
 // ── Temporary simple popup function ──
 async function showMovie(id){
-const res = await fetch(`${BASE}/movie/${id}?api_key=${API_KEY}`);
-const m = await res.json();
+  const res = await fetch(`${BASE}/movie/${id}?api_key=${API_KEY}`);
+  const m = await res.json();
 
-document.getElementById("popup").style.display="flex";
-document.getElementById("poptitle").innerText = m.title || "Movie";
-document.getElementById("popimg").src = IMG + m.poster_path;
+  document.getElementById("popup").style.display="flex";
+  document.getElementById("poptitle").innerText = m.title || "Movie";
+  document.getElementById("popimg").src = IMG + m.poster_path;
 
-document.getElementById("watchbtn").href="#";
-document.getElementById("downbtn").href="#";
+  const title = m.title || "Unknown";
+  document.getElementById("watchbtn").href = watchLinks[title] || "#";
+  document.getElementById("downbtn").href = watchLinks[title] || "#";
   }
 
 function closePopup(){
