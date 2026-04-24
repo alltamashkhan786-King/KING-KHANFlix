@@ -348,6 +348,15 @@
   </style>
 </head>
 <body>
+<div id="lockscreen" style="position:fixed;inset:0;background:#000;z-index:99999;display:flex;justify-content:center;align-items:center;">
+<div style="background:#111;padding:30px;border-radius:12px;text-align:center;width:320px;color:white;border:1px solid #333;">
+<h1 style="color:red;margin-bottom:10px;">KING KHANFlix</h1>
+<p style="margin-bottom:15px;">Enter Password</p>
+<input id="passbox" type="password" placeholder="Password" style="width:100%;padding:10px;margin-bottom:10px;background:#222;border:none;color:white;">
+<button onclick="checkPass()" style="width:100%;padding:10px;background:red;color:white;border:none;">ENTER</button>
+<p id="wrong" style="color:#ff5555;margin-top:10px;font-size:12px;"></p>
+</div>
+</div>
 
 <!-- TOP BAR -->
 <div class="topbar">
@@ -708,6 +717,15 @@ const data = await res.json();
 
 document.getElementById("latest-grid").innerHTML =
 (data.results || []).slice(0,12).map(makeCard).join("");
+  }
+function checkPass(){
+let p = document.getElementById("passbox").value;
+
+if(p === "king786"){
+document.getElementById("lockscreen").style.display="none";
+}else{
+document.getElementById("wrong").innerText="Wrong Password";
+}
   }
 </script>
 <div id="popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;justify-content:center;align-items:center;">
