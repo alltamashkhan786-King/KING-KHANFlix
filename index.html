@@ -371,7 +371,7 @@
     </nav>
     <div class="search-box">
       <input type="text" placeholder="Search movies..."/>
-      <button>🔍</button>
+      <button onclick="searchMovie()">🔍</button>
     </div>
   </div>
 </header>
@@ -686,6 +686,16 @@ setInterval(() => goSlide((cur + 1) % slides.length), 4000);
 function showMovie(id){
   alert("Movie popup temporarily disabled");
 }
+async function searchMovie(){
+const q = document.querySelector('.search-box input').value.trim();
+if(!q) return;
+
+const res = await fetch(`${BASE}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(q)}`);
+const data = await res.json();
+
+document.getElementById("latest-grid").innerHTML =
+(data.results || []).slice(0,12).map(makeCard).join("");
+  }
 </script>
 </body>
   </html>
