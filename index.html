@@ -595,7 +595,7 @@ function makeCard(m) {
   const year   = (m.release_date || m.first_air_date || "").slice(0, 4);
   const rating = m.vote_average ? m.vote_average.toFixed(1) : "N/A";
   return `
-    <div class="movie-card">
+    <div class="movie-card">onclick="showMovie(${m.id})"
       <div class="movie-thumb">
         <img src="${poster}" alt="${title}" loading="lazy"/>
         <span class="quality-badge">HD</span>
@@ -674,6 +674,29 @@ function goSlide(n) {
 }
 
 setInterval(() => goSlide((cur + 1) % slides.length), 4000);
+</script>
+async function showMovie(id){
+let res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=PASTE_YOUR_API_KEY_HERE&append_to_response=videos`);
+let data = await res.json();
+
+let trailer = "";
+if(data.videos.results.length > 0){
+trailer = data.videos.results[0].key;
+}
+
+document.body.insertAdjacentHTML("beforeend", `
+<div id="popup" style="position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;padding:20px;overflow:auto;">
+<div style="max-width:800px;margin:auto;background:#111;padding:20px;color:white;border-radius:10px;">
+<h2>${data.title}</h2>
+<p>${data.overview}</p>
+${trailer ? `<iframe width="100%" height="400" src="https://www.youtube.com/embed/${trailer}" allowfullscreen></iframe>` : ""}
+<br><br>
+<a href="#" style="background:red;padding:10px 20px;color:white;text-decoration:none;">▶ Watch Now</a>
+<button onclick="document.getElementById('popup').remove()" style="float:right;">❌ Close</button>
+</div>
+</div>
+`);
+}
 </script>
 </body>
 </html>
