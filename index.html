@@ -775,7 +775,10 @@ html += `
 <span>Saved</span>
 <span class="card-rating">⭐ New</span>
 </div>
-
+<button onclick="editMovie(${index})"
+style="width:100%;margin-top:8px;padding:7px;background:#444;color:white;border:none;border-radius:6px;">
+Edit
+</button>
 <button onclick="deleteMovie(${index})"
 style="width:100%;margin-top:8px;padding:7px;background:red;color:white;border:none;border-radius:6px;">
 Delete
@@ -788,6 +791,27 @@ Delete
 });
 
 document.getElementById("latest-grid").innerHTML = html;
+  }
+function editMovie(i){
+
+let movies = JSON.parse(localStorage.getItem("kkmovies") || "[]");
+
+let m = movies[i];
+
+let newTitle = prompt("Edit Title", m.title);
+let newPoster = prompt("Edit Poster URL", m.poster);
+let newWatch = prompt("Edit Watch Link", m.watch);
+
+movies[i] = {
+title:newTitle,
+poster:newPoster,
+watch:newWatch,
+down:m.down
+};
+
+localStorage.setItem("kkmovies", JSON.stringify(movies));
+
+renderSavedMovies();
   }
 function deleteMovie(i){
 
