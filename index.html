@@ -694,17 +694,18 @@ function goSlide(n) {
 setInterval(() => goSlide((cur + 1) % slides.length), 4000);
 
 // ── Temporary simple popup function ──
-async function showMovie(id){
-  const res = await fetch(`${BASE}/movie/${id}?api_key=${API_KEY}`);
-  const m = await res.json();
+function showMovie(id){
+  const title = Object.keys(watchLinks).find(t=>t.id==id || t===id) || "Unknown";
+  const link = watchLinks[title] || "";
 
-  document.getElementById("popup").style.display="flex";
-  document.getElementById("poptitle").innerText = m.title || "Movie";
-  document.getElementById("popimg").src = IMG + m.poster_path;
-
-  const title = m.title || "Unknown";
-  document.getElementById("watchbtn").href = watchLinks[title] || "#";
-  document.getElementById("downbtn").href = watchLinks[title] || "#";
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("poptitle").innerText = title;
+  document.getElementById("popvideo").src = link;
+  document.getElementById("downbtn").href = link;
+}
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+  document.getElementById("popvideo").pause();
   }
 
 function closePopup(){
@@ -927,12 +928,11 @@ window.addEventListener("load", ()=>{
 document.body.style.opacity="1";
 });
 </script>
-<div id="popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;justify-content:center;align-items:center;">
-  <div style="background:#111;padding:20px;border-radius:10px;max-width:320px;width:90%;text-align:center;color:white;">
-    <img id="popimg" src="" style="width:100%;border-radius:8px;margin-bottom:10px;">
-    <h2 id="poptitle">Movie</h2>
-    <a href="#" id="watchbtn" style="display:block;background:red;padding:10px;margin:8px 0;border-radius:6px;color:white;">▶ Watch Now</a>
-    <a href="#" id="downbtn" style="display:block;background:#333;padding:10px;margin:8px 0;border-radius:6px;color:white;">⬇ Download</a>
+<div id="popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;justify-content:center;align-items:center;">
+  <div style="background:#111;padding:20px;border-radius:10px;max-width:90%;width:360px;text-align:center;color:white;">
+    <h2 id="poptitle" style="margin-bottom:10px;"></h2>
+    <video id="popvideo" controls style="width:100%;border-radius:8px;"></video>
+    <a id="downbtn" href="#" style="display:block;background:#333;padding:10px;margin-top:8px;color:white;border-radius:6px;">⬇ Download</a>
     <button onclick="closePopup()" style="margin-top:10px;padding:8px 16px;">Close</button>
   </div>
 </div>
@@ -949,7 +949,7 @@ document.body.style.opacity="1";
 </select>
 <input id="mposter" placeholder="Poster Image URL" style="width:100%;padding:10px;margin:5px 0;">
 <input type="file" id="posterFile" accept="image/*" style="width:100%;padding:10px;margin:5px 0;color:white;">
-<input id="mwatch" placeholder="Watch Link" style="width:100%;padding:10px;margin:5px 0;">
+<input id="mwatch" placeholder="watchLinks[title] = watch;" style="width:100%;padding:10px;margin:5px 0;">
 <input id="mdownload" placeholder="Download Link" style="width:100%;padding:10px;margin:5px 0;">
 
 <button onclick="addMovie()" style="width:100%;padding:12px;background:red;color:white;border:none;margin-top:10px;">
