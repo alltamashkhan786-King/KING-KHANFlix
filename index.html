@@ -823,6 +823,21 @@ localStorage.setItem("kkmovies", JSON.stringify(movies));
 
 renderSavedMovies();
   }
+document.getElementById("posterFile").addEventListener("change", function(){
+
+let file = this.files[0];
+
+if(!file) return;
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+document.getElementById("mposter").value = e.target.result;
+};
+
+reader.readAsDataURL(file);
+
+});
 window.addEventListener("load", ()=>{
 document.body.style.opacity="1";
 });
@@ -841,6 +856,7 @@ document.body.style.opacity="1";
 
 <input id="mtitle" placeholder="Movie Title" style="width:100%;padding:10px;margin:5px 0;">
 <input id="mposter" placeholder="Poster Image URL" style="width:100%;padding:10px;margin:5px 0;">
+<input type="file" id="posterFile" accept="image/*" style="width:100%;padding:10px;margin:5px 0;color:white;">
 <input id="mwatch" placeholder="Watch Link" style="width:100%;padding:10px;margin:5px 0;">
 <input id="mdownload" placeholder="Download Link" style="width:100%;padding:10px;margin:5px 0;">
 
