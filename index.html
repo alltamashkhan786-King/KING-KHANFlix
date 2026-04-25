@@ -711,14 +711,54 @@ function closePopup(){
 document.getElementById("popup").style.display="none";
   }
 async function searchMovie(){
-const q = document.querySelector('.search-box input').value.trim();
+
+let q = document.querySelector('.search-box input').value.toLowerCase().trim();
+
 if(!q) return;
+
+let movies = JSON.parse(localStorage.getItem("kkmovies") || "[]");
+
+let found = movies.filter(m =>
+m.title.toLowerCase().includes(q)
+);
+
+if(found.length > 0){
+
+let html = "";
+
+found.forEach((m,index)=>{
+
+html += `
+<div class="movie-card">
+<div class="movie-thumb">
+<img src="${m.poster}" loading="lazy">
+<div class="card-overlay"><div class="play-btn">▶</div></div>
+</div>
+
+<div class="card-body">
+<div class="card-title">${m.title}</div>
+
+<div class="card-meta">
+<span>${m.cat}</span>
+<span class="card-rating">⭐ Saved</span>
+</div>
+</div>
+</div>
+`;
+
+});
+
+document.getElementById("latest-grid").innerHTML = html;
+
+}else{
 
 const res = await fetch(`${BASE}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(q)}`);
 const data = await res.json();
 
 document.getElementById("latest-grid").innerHTML =
 (data.results || []).slice(0,12).map(makeCard).join("");
+
+}
   }
 function checkPass(){
 let p = document.getElementById("passbox").value;
