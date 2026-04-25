@@ -735,14 +735,15 @@ let title = document.getElementById("mtitle").value;
 let poster = document.getElementById("mposter").value;
 let watch = document.getElementById("mwatch").value;
 let down = document.getElementById("mdownload").value;
-
+let cat = document.getElementById("mcat").value;
 let movies = JSON.parse(localStorage.getItem("kkmovies") || "[]");
 
 movies.unshift({
 title:title,
 poster:poster,
 watch:watch,
-down:down
+down:down,
+cat:cat
 });
 
 localStorage.setItem("kkmovies", JSON.stringify(movies));
@@ -855,6 +856,13 @@ document.body.style.opacity="1";
 <h2 style="color:red;">ADMIN PANEL</h2>
 
 <input id="mtitle" placeholder="Movie Title" style="width:100%;padding:10px;margin:5px 0;">
+<select id="mcat" style="width:100%;padding:10px;margin:5px 0;">
+<option>Bollywood</option>
+<option>Hollywood</option>
+<option>South</option>
+<option>Web Series</option>
+<option>Punjabi</option>
+</select>
 <input id="mposter" placeholder="Poster Image URL" style="width:100%;padding:10px;margin:5px 0;">
 <input type="file" id="posterFile" accept="image/*" style="width:100%;padding:10px;margin:5px 0;color:white;">
 <input id="mwatch" placeholder="Watch Link" style="width:100%;padding:10px;margin:5px 0;">
