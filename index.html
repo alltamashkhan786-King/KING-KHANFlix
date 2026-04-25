@@ -889,6 +889,40 @@ document.getElementById("mposter").value = e.target.result;
 reader.readAsDataURL(file);
 
 });
+function exportMovies(){
+
+let movies = localStorage.getItem("kkmovies") || "[]";
+
+let blob = new Blob([movies], {type:"application/json"});
+
+let a = document.createElement("a");
+
+a.href = URL.createObjectURL(blob);
+
+a.download = "kingkhanflix-backup.json";
+
+a.click();
+  }
+document.getElementById("restoreFile").addEventListener("change", function(){
+
+let file = this.files[0];
+if(!file) return;
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+localStorage.setItem("kkmovies", e.target.result);
+
+renderSavedMovies();
+
+alert("Movies Restored Successfully");
+
+};
+
+reader.readAsText(file);
+
+});
 window.addEventListener("load", ()=>{
 document.body.style.opacity="1";
 });
@@ -921,6 +955,11 @@ document.body.style.opacity="1";
 <button onclick="addMovie()" style="width:100%;padding:12px;background:red;color:white;border:none;margin-top:10px;">
 ADD MOVIE
 </button>
+<button onclick="exportMovies()" style="width:100%;padding:12px;background:#333;color:white;border:none;margin-top:10px;">
+BACKUP MOVIES
+</button>
+<input type="file" id="restoreFile" accept=".json"
+style="width:100%;padding:10px;margin-top:10px;color:white;">
 </div>
 </body>
   </html>
